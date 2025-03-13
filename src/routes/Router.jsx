@@ -7,6 +7,7 @@ import Register from "../pages/auth/register/Register";
 import PrivateAlt from "./PrivateAlt";
 import Private from "./Private";
 import Error from "../pages/Error/Error";
+import Favourite from "../pages/favourite/Favourite";
 
 const router = createBrowserRouter([
     {
@@ -17,7 +18,11 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home />
-            }
+            },
+            {
+                path: '/favourtie',
+                element: <Private><Favourite /></Private>
+            },
         ]
 
     },
