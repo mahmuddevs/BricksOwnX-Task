@@ -31,3 +31,9 @@ VITE_FIREBASE_MESSAGING_SENDER_ID=your-messaging-sender-id
 VITE_FIREBASE_APP_ID=your-app-id
 VITE_FIREBASE_MEASUREMENT_ID=your-measurement-id
 ```
+
+## How To Run
+
+1. Open CMD in Root Directory
+2. Run npm i or npm install
+3. Run npm run dev
