@@ -42,9 +42,8 @@ function ProductCard({ product }) {
                     className="h-40 object-contain"
                 />
             </div>
-            <div className="p-5 flex flex-col flex-1"> {/* Make this a flex container and allow it to grow */}
-                {/* Content above the bottom section */}
-                <div className="flex-1"> {/* Allow this section to grow and take up available space */}
+            <div className="p-5 flex flex-col flex-1">
+                <div className="flex-1">
                     <div className="flex justify-between items-start">
                         <div>
                             <p className="block text-lg leading-tight font-medium text-black">

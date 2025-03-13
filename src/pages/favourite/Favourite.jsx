@@ -37,7 +37,7 @@ const Favourite = () => {
                         <th className="py-2 px-4 border-b">Image</th>
                         <th className="py-2 px-4 border-b">Title</th>
                         <th className="py-2 px-4 border-b">Price</th>
-                        <th className="py-2 px-4 border-b">Description</th>
+                        <th className="py-2 px-4 border-b hidden md:table-cell">Description</th>
                         <th className="py-2 px-4 border-b">Action</th>
                     </tr>
                 </thead>
@@ -53,7 +53,7 @@ const Favourite = () => {
                             </td>
                             <td className="py-2 px-4 border-b">{product.title}</td>
                             <td className="py-2 px-4 border-b">${product.price}</td>
-                            <td className="py-2 px-4 border-b">{product.description}</td>
+                            <td className="py-2 px-4 border-b hidden md:table-cell">{product.description}</td>
                             <td className="py-2 px-4 border-b">
                                 <button
                                     onClick={() => handleDelete(product.id)}

@@ -29,6 +29,7 @@ const Home = () => {
 
 
     const handleSearch = (e) => {
+        console.log(e + "ss")
         setQuery(e.target.value);
     };
 
@@ -39,8 +40,8 @@ const Home = () => {
     };
 
     const handleSort = (e) => {
+        console.log(e + "sort")
         const sortValue = parseInt(e.target.value);
-        console.log(sortValue);
 
         if (sortValue === 0) {
             setSortedProducts(products);

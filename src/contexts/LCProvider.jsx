@@ -1,36 +1,41 @@
 import { createContext, useEffect, useState } from "react";
 
-export const LcContext = createContext()
+export const LcContext = createContext();
 
 const LCProvider = ({ children }) => {
     const [fav, setFav] = useState([])
+
     const fetchFav = () => {
-        const favsStr = localStorage.getItem('favourites')
-        const favs = JSON.parse(favsStr)
-        setFav(favs)
-    }
+        const favsStr = localStorage.getItem("favourites")
+        const favs = favsStr ? JSON.parse(favsStr) : []
+        setFav(favs);
+    };
 
     useEffect(() => {
-        fetchFav()
-    }, [])
+        fetchFav();
+    }, []);
+
 
     const addFav = (id) => {
-        setFav([...fav, id])
-        const data = JSON.stringify(fav)
-        localStorage.setItem('favourites', data)
-    }
+        if (!fav.includes(id)) {
+            const updatedFav = [...fav, id]
+            setFav(updatedFav)
+            localStorage.setItem("favourites", JSON.stringify(updatedFav))
+        }
+    };
 
 
     const value = {
         fav,
         setFav,
-        addFav
-    }
+        addFav,
+    };
 
     return (
         <LcContext.Provider value={value}>
             {children}
         </LcContext.Provider>
-    )
-}
-export default LCProvider
+    );
+};
+
+export default LCProvider;

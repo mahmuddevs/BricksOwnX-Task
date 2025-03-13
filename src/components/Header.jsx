@@ -81,7 +81,7 @@ const Header = () => {
                             </ul>
                         </>
                     }
-                    <div>
+                    <div className="flex gap-6">
                         <div className="relative">
                             <NavLink className="text-2xl text-red-600" to='/favourtie'><FaHeart /></NavLink>
                             {

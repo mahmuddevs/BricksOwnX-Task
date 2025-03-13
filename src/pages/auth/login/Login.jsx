@@ -5,10 +5,11 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { AuthContext } from "../../../contexts/AuthProvider";
 import { Helmet } from "react-helmet";
 import Swal from "sweetalert2";
+import useAuth from "../../../hooks/useAuth";
 
 const Login = () => {
     const [showPass, setShowPass] = useState(false);
-    const { loginUser, loginWithGoogle, setLoading } = useContext(AuthContext);
+    const { loginUser, loginWithGoogle, setLoading } = useAuth();
     const location = useLocation();
     const navigate = useNavigate();
 
