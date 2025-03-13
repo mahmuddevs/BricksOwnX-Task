@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { FaBarsStaggered } from "react-icons/fa6";
 import { IoMdClose } from "react-icons/io"
 import { Link, NavLink } from "react-router-dom"
@@ -6,34 +6,20 @@ import { Tooltip } from 'react-tooltip'
 import { motion } from "motion/react"
 import useAuth from "../hooks/useAuth";
 import { FaHeart } from "react-icons/fa";
+import { LcContext } from "../contexts/LCProvider";
 
 
 const Header = () => {
     const [navOpen, setNavOpen] = useState(false)
-    const [favCount, setFavCount] = useState(0)
     const { user, logOut } = useAuth()
+    const { fav } = useContext(LcContext)
 
-    const fetchFavCount = () => {
-        const favsStr = localStorage.getItem('favourites')
-        const favs = JSON.parse(favsStr)
-        setFavCount(favs?.length)
-    }
-
-    useEffect(() => {
-        fetchFavCount()
-    }, [])
 
     const navItems = (
         <>
             <li className="flex justify-between">
                 <NavLink to='/'>Home</NavLink>
                 <IoMdClose onClick={() => { setNavOpen(false) }} className="block lg:hidden cursor-pointer text-xl" />
-            </li>
-            <li>
-                <NavLink to='/'>About Us</NavLink>
-            </li>
-            <li>
-                <NavLink to='/'>Contact Us</NavLink>
             </li>
         </>
     )
@@ -99,11 +85,11 @@ const Header = () => {
                         <div className="relative">
                             <NavLink className="text-2xl text-red-600" to='/favourtie'><FaHeart /></NavLink>
                             {
-                                favCount > 0 && <span
+                                fav?.length > 0 && <span
                                     className="p-1 absolute -top-1 -right-1.5 text-sm rounded-full bg-black/50 text-white flex items-center justify-center"
                                     style={{ width: "18px", height: "18px" }}
                                 >
-                                    {favCount}
+                                    {fav?.length}
                                 </span>
                             }
                         </div>

@@ -1,11 +1,12 @@
+import { useContext } from "react";
 import { FaHeart, FaStar, FaRegStar, FaStarHalfAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { LcContext } from "../contexts/LCProvider";
 
 function ProductCard({ product }) {
+    const { fav, addFav } = useContext(LcContext)
     const handleAddToFavourite = (id) => {
-        const lcData = localStorage.getItem("favourites");
-        const data = JSON.parse(lcData);
-        const exists = data.find((item) => item === id);
+        const exists = fav.find((item) => item === id);
         if (exists) {
             Swal.fire({
                 position: "top-end",
@@ -16,10 +17,8 @@ function ProductCard({ product }) {
             });
             return;
         } else {
-            data.push(id);
+            addFav(id)
         }
-
-        localStorage.setItem("favourites", JSON.stringify(data));
         Swal.fire({
             position: "top-end",
             icon: "success",
